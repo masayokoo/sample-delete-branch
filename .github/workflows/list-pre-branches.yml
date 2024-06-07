@@ -20,6 +20,6 @@ jobs:
         run: npm install @octokit/rest
 
       - name: List -pre branches
-        run: node ./github/workflows/list_pre_branches.js
+        run: node ./.github/workflows/list_pre_branches.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
