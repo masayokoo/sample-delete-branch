@@ -1,0 +1,25 @@
+name: List Pre Branches
+
+on:
+  workflow_dispatch:  # 手動での実行
+
+jobs:
+  list_pre_branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install octokit/rest.js
+        run: npm install @octokit/rest
+
+      - name: List -pre branches
+        run: node list_pre_branches.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
